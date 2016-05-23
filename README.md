@@ -1,10 +1,10 @@
-# Liquibase 2.0.5
+# Liquibase
 
-[![Docker Repository on Quay.io](https://quay.io/repository/freshbooks/liquibase-mysql/status "Docker Repository on Quay.io")](https://quay.io/repository/freshbooks/liquibase-mysql)
+[![Fork freshbooks/liquibase-mysql]](https://hub.docker.com/r/freshbooks/liquibase-mysql)
 
 ## Default Configuration
 
-Runs liquibase 2.0.5 with mysql connector
+Runs liquibase with mysql connector
 
 ## Usage
 
@@ -23,7 +23,7 @@ docker run -it \
   --rm \
   -v /local/path/migrations:/changelogs \
   -e TARGET_DATABASE=foo \
-  freshbooks/liquibase-mysql:2.0.5
+  goruha/liquibase-mysql
 ```
 
 
@@ -47,7 +47,7 @@ You may also invoke liquibase with whatever options or command you like.
 docker run -it \
   --rm \
   -v /local/path/migrations:/changelogs \
-  freshbooks/liquibase_mysql:2.0.5 \
+  goruha/liquibase_mysql \
    --changeLogFile=/changelogs/migrations.xml \
    --username=foo
    --password=bar
