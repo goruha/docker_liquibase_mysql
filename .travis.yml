@@ -11,4 +11,3 @@ script:
 - docker ps -a
 - docker ps -a | grep -q test
 - if [ ! -z "$TRAVIS_TAG" ]; then docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG; fi && docker push $DOCKER_IMAGE_NAME
-- rm -rf /home/travis/.docker/config.json
