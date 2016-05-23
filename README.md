@@ -1,6 +1,6 @@
 # Liquibase
 
-[Fork freshbooks/liquibase-mysql](https://hub.docker.com/r/freshbooks/liquibase-mysql)
+## Fork [freshbooks/liquibase-mysql](https://hub.docker.com/r/freshbooks/liquibase-mysql)
 
 ## Default Configuration
 
