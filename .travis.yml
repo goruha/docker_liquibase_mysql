@@ -7,7 +7,8 @@ install:
 - docker login --email="$DOCKER_HUB_EMAIL" --username="$DOCKER_HUB_USERNAME" --password="$DOCKER_HUB_PASSWORD"
 script:
 - docker build -t $DOCKER_IMAGE_NAME .
-- docker run -it --name $DOCKER_IMAGE_NAME test
+- docker run -it --name test $DOCKER_IMAGE_NAME
+- docker ps -a
 - docker ps -a | grep -q test
 - if [ ! -z "$TRAVIS_TAG" ]; then docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG; fi && docker push $DOCKER_IMAGE_NAME
 - rm -rf /home/travis/.docker/config.json
