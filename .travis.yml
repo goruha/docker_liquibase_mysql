@@ -9,5 +9,5 @@ script:
 - docker build -t $DOCKER_IMAGE_NAME .
 - docker run -it --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
 - docker ps -a | grep -q $DOCKER_IMAGE_NAME
-- if [ ! -z "$TRAVIS_TAG" ]; then docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG;
-  fi && docker push $DOCKER_IMAGE_NAME
+- if [ ! -z "$TRAVIS_TAG" ]; then docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG; fi && docker push $DOCKER_IMAGE_NAME
+- rm -rf /home/travis/.docker/config.json
