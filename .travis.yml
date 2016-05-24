@@ -6,9 +6,8 @@ services:
 install:
 - docker login --email="$DOCKER_HUB_EMAIL" --username="$DOCKER_HUB_USERNAME" --password="$DOCKER_HUB_PASSWORD"
 - docker run -d   -e MYSQL_ROOT_PASSWORD=root  --name mysql mysql:5.7
--
 script:
 - docker build -t $DOCKER_IMAGE_NAME .
-- docker run -it --link mysql:mysql -e TARGET_DATABASE=foo?createDatabaseIfNotExist=true -e MYSQL_HOST=mysql  -e MYSQL_PASSWORD=root --name test $DOCKER_IMAGE_NAME
+- docker run -it -v ./migrations.xml:/changelogs/migrations.xml --link mysql:mysql -e TARGET_DATABASE=foo?createDatabaseIfNotExist=true -e MYSQL_HOST=mysql  -e MYSQL_PASSWORD=root --name test $DOCKER_IMAGE_NAME
 - docker ps -a | grep -q test
 - if [ ! -z "$TRAVIS_TAG" ]; then docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG; fi && docker push $DOCKER_IMAGE_NAME
