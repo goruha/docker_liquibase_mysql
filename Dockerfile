@@ -1,15 +1,17 @@
 FROM centos:6
 
+ENV VERSION=2.0.5
+
 RUN yum -y update && yum clean all
 
 RUN \
   yum -y install unzip java-1.7.0-openjdk
 
 RUN \
-  curl -sf -o liquibase-2.0.5-bin.zip -L https://github.com/liquibase/liquibase/releases/download/liquibase-parent-2.0.5/liquibase-2.0.5-bin.zip && \
+  curl -sf -o liquibase-$VERSION-bin.zip -L https://github.com/liquibase/liquibase/releases/download/liquibase-parent-$VERSION/liquibase-$VERSION-bin.zip && \
   mkdir /opt/liquibase && \
-  unzip liquibase-2.0.5-bin.zip -d /opt/liquibase && \
-  rm -f liquibase-2.0.5-bin.zip && \
+  unzip liquibase-$VERSION-bin.zip -d /opt/liquibase && \
+  rm -f liquibase-$VERSION-bin.zip && \
   chmod +x /opt/liquibase/liquibase && \
   ln -s /opt/liquibase/liquibase /usr/local/bin/
 
