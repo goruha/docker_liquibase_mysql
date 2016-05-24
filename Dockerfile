@@ -1,6 +1,6 @@
 FROM centos:6
 
-ENV VERSION=2.0.5
+ENV VERSION=111
 
 RUN yum -y update && yum clean all
 
